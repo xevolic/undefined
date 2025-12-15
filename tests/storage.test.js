@@ -36,6 +36,11 @@ describe('storage', () => {
             expect(storage.get('bad', 'fallback')).toBe('fallback')
         })
 
+        test('returns defaultValue, when JSON.parse throws an exception (e.g. "NaN")', () => {
+            sessionStorage.setItem('bad', 'NaN') // niepoprawny JSON
+            expect(storage.get('bad', 'fallback')).toBe('fallback')
+        })
+
         test('returns defaultValue, when JSON.parse was mocked and thrown an exception', () => {
             sessionStorage.setItem('x', '{"a":1}')
 
