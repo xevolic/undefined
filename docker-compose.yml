@@ -1,0 +1,8 @@
+services:
+  node14:
+    image: node:14-bullseye
+    working_dir: /app
+    volumes:
+      - ./:/app
+#    command: sh -lc "npm ci && npm test"
+    command: '/bin/bash'
